@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Topsection from './reactcomponent/Topsection';
+import Table from './reactcomponent/Table';
 import './App.css';
 var counter = 'none';
 function App() {
@@ -124,6 +125,13 @@ function App() {
 ]
 
   for(let i=0; i < data.length; i++) {
+    if(i > 0) {
+      for(let j=0; j < data[i].length; j++) {
+      }
+    }
+  }
+  console.log(document.body.children[1].children[0])
+  for(let i=0; i < data.length; i++) {
     if(data[i].length === 11) {
       data[i][0].time = '07:30-07:45';
       data[i][1].time = '07:45-08:25';
@@ -220,32 +228,36 @@ function App() {
       }
     }
   }, 1000)
-  setInterval(() => {
+
+  const notications = () => {
     var d = new Date;
     if(counter === 0) {
-      new Notification(data[d.getDay()][counter].teach)
+      notify(data[d.getDay()][counter].link, data[d.getDay()][counter].teach, data[d.getDay()][counter].sub)
     } else if(counter === 1) {
-      new Notification(data[d.getDay()][counter].teach)
+      notify(data[d.getDay()][counter].link, data[d.getDay()][counter].teach, data[d.getDay()][counter].sub)
     } else if(counter === 2) {
-      new Notification(data[d.getDay()][counter].teach)
+      notify(data[d.getDay()][counter].link, data[d.getDay()][counter].teach, data[d.getDay()][counter].sub)
     } else if(counter === 3) {
-      new Notification(data[d.getDay()][counter].teach)
+      notify(data[d.getDay()][counter].link, data[d.getDay()][counter].teach, data[d.getDay()][counter].sub)
     } else if(counter === 4) {
-      new Notification(data[d.getDay()][counter].teach)
+      notify(data[d.getDay()][counter].link, data[d.getDay()][counter].teach, data[d.getDay()][counter].sub)
     } else if(counter === 5) {
-      new Notification(data[d.getDay()][counter].teach)
+      notify(data[d.getDay()][counter].link, data[d.getDay()][counter].teach, data[d.getDay()][counter].sub)
     } else if(counter === 6) {
-      new Notification(data[d.getDay()][counter].teach)
+      notify(data[d.getDay()][counter].link, data[d.getDay()][counter].teach, data[d.getDay()][counter].sub)
     } else if(counter === 7) {
-      new Notification(data[d.getDay()][counter].teach)
+      notify(data[d.getDay()][counter].link, data[d.getDay()][counter].teach, data[d.getDay()][counter].sub)
     } else if(counter === 8) {
-      new Notification(data[d.getDay()][counter].teach)
+      notify(data[d.getDay()][counter].link, data[d.getDay()][counter].teach, data[d.getDay()][counter].sub)
     } else if(counter === 9) {
-      new Notification(data[d.getDay()][counter].teach)
+      notify(data[d.getDay()][counter].link, data[d.getDay()][counter].teach, data[d.getDay()][counter].sub)
     } else if(counter === 10) {
-      new Notification(data[d.getDay()][counter].teach)
+      notify(data[d.getDay()][counter].link, data[d.getDay()][counter].teach, data[d.getDay()][counter].sub)
     }
-  }, 2400000)
+  }
+
+  setInterval(notications, 2400000)
+  notications();
 
   function requestPermission() {
     if(!("Notification" in window)) {
@@ -259,7 +271,8 @@ function App() {
 
   function notify(link, teach, sub) {
     var notification = new Notification(teach, {
-      body: sub
+      icon: 'https://i.ibb.co/jMRLm3D/presentation.png',
+      body: sub,
     })
 
     notification.onclick = () => {
@@ -272,8 +285,11 @@ function App() {
   return (
     <div className="App"> 
       <Topsection/>
+      <Table/>
     </div>
   );
+  //design: https://www.figma.com/file/D74U9dEzWqkxbxoKS9AQLe?embed_host=share&kind=&node-id=0%3A1&viewer=1
+  //basedon: https://static-cse.canva.com/blob/424622/1600w-y62FO4jXJBk.jpg
 }
 
 export default App;
