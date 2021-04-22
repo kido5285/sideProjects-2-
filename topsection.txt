@@ -9,7 +9,7 @@ const addZero = (num) => {
     }
 }
 
-function Topsection({teach}) {
+function Topsection() {
     setInterval(() => {
         var d = new Date;   
         document.querySelector('.thetime').textContent = `${addZero(d.getHours())}:${addZero(d.getMinutes())}:${addZero(d.getSeconds())}`;    
@@ -26,7 +26,7 @@ function Topsection({teach}) {
     return (
         <div className="top">
             <h1 className="thetime"></h1>
-            <h1>{teach}</h1>
+            <h1 id="teach">teacher</h1>
             <h1 className="date"></h1>
         </div>
     )
